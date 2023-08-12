@@ -100,59 +100,7 @@ def iter_dates(dates):
         for date in dates:
             yield date
 
-        # loop over each edition
-        # with Pool() as p:
-        #     p.starmap(process_edition, [(edition, functions, publication_date, engine, batch_id) for edition in editions])
-
-        # for edition in editions:
-        #     # Convert the edition URL to point to the "empresas_cooperativas" section
-        #     url_parts = edition.split("?")
-        #     specific_url = f"https://www.diariooficial.interior.gob.cl/edicionelectronica/empresas_cooperativas.php?{url_parts[1]}"
-        #     # fetch url and parse html
-        #     response = fetch_url(specific_url)
-        #     soup = parse_html(response)
-        #     # extract content and save it as a dictionary
-        #     contents = soup_to_dictionary(soup)
-        #     # iterate over the companies and their pdfs
-        #     logging.info("Starting extraction...")
-        #     for section, function in functions.items():
-        #         if (
-        #             "Sumario" in contents
-        #             and "Empresas y Cooperativas" in contents["Sumario"]
-        #         ):
-        #             if section in contents["Sumario"]["Empresas y Cooperativas"]:
-        #                 for sub_section in contents["Sumario"][
-        #                     "Empresas y Cooperativas"
-        #                 ][section][""]:
-        #                     for item in contents["Sumario"]["Empresas y Cooperativas"][
-        #                         section
-        #                     ][""][sub_section]:
-        #                         pdf_link = item["link"]
-        #                         # get the text content of the pdf
-        #                         logging.info(f"Parsing PDF link: {pdf_link}")
-        #                         time.sleep(
-        #                             random.uniform(MIN_DELAY, MAX_DELAY)
-        #                         )  # Be nice to the government
-        #                         item["text_content"] = PdfParser().get_pdf_text(
-        #                             pdf_link
-        #                         )
-        #                         item["clean_text_content"] = clean_text(
-        #                             item["text_content"]
-        #                         )
-        #                         item["trimmed_text_content"] = trim_text(
-        #                             item["clean_text_content"]
-        #                         )
-        #                         item["section"] = section
-        #                         item["sub_section"] = sub_section
-        #                         item["publication_date"] = publication_date
-
-        #                         logging.info("Uploading record to database")
-        #                         upload_to_db(engine, item, batch_id)
-        #             else:
-        #                 logging.info(f"No available content in section: {section}")
-        #         else:
-        #             logging.info("Reached end of file")
-
+      
 
 def process_edition(edition, functions, publication_date, engine, batch_id):
     # Convert the edition URL to point to the "empresas_cooperativas" section
